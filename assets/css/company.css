@@ -1,0 +1,77 @@
+@charset "UTF-8";
+/**************************************/
+/* -------------------------
+ * コンテンツ
+ * ------------------------- */
+.dl__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.dl__list dt,
+.dl__list dd {
+  padding-block: 3rem;
+}
+.dl__list dt {
+  width: 23%;
+  border-bottom: 1px solid #666;
+}
+@media (max-width: 639px) {
+  .dl__list dt {
+    width: 100%;
+    border-bottom: none;
+    padding: 1.6rem 0 0 0;
+  }
+}
+.dl__list dd {
+  width: 77%;
+  border-bottom: 1px solid #ddd;
+  padding-left: 1.6rem;
+}
+@media (max-width: 639px) {
+  .dl__list dd {
+    min-width: 140px;
+    padding: 1rem 0 1.6rem 0;
+    width: 100%;
+  }
+}
+
+.dl__info-ttl {
+  font-weight: normal;
+  margin-block: 3rem 0.8rem;
+}
+
+.dl__mark-list li {
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.8;
+}
+.dl__mark-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 12px;
+  aspect-ratio: 1;
+  background-color: #154d8b;
+  border-radius: 50%;
+}
+
+.company__address-link {
+  margin-left: 1em;
+}
+
+.company__address-icon {
+  font-family: "Material Symbols Outlined";
+  color: inherit;
+  font-variation-settings: "FILL" 1;
+  font-size: 16px;
+}
+
+.company__address-link-txt {
+  text-decoration: underline;
+}/*# sourceMappingURL=company.css.map */

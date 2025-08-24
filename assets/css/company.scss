@@ -1,0 +1,93 @@
+$breakpoints: (
+  r1599: 1599px,
+  r1399: 1399px,
+  r1359: 1359px,
+  r1240: 1240px,
+  r1200: 1200px,
+  r1199: 1199px,
+  r1100: 1100px,
+  r1024: 1024px,
+  r960: 960px,
+  r930: 930px,
+  r834: 834px,
+  r639: 639px,
+  r600: 600px,
+  r499: 499px,
+  r450: 450px,
+  r399: 399px,
+);
+
+@mixin max($breakpoint) {
+  @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+    @content;
+  }
+}
+
+/**************************************/
+/* -------------------------
+ * コンテンツ
+ * ------------------------- */
+.dl__list {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  dt,
+  dd {
+    padding-block: 3rem;
+  }
+  $dt-width: 23%;
+  dt {
+    width: $dt-width;
+    border-bottom: 1px solid #666;
+    @include max(r639) {
+      width: 100%;
+      border-bottom: none;
+      padding: 1.6rem 0 0 0;
+    }
+  }
+  dd {
+    // width: calc(100% - $dt-width - 1%);
+    width: calc(100% - $dt-width);
+    border-bottom: 1px solid #ddd;
+    padding-left: 1.6rem;
+    @include max(r639) {
+      min-width: 140px;
+      padding: 1rem 0 1.6rem 0;
+      width: 100%;
+    }
+  }
+}
+.dl__info-ttl {
+  font-weight: normal;
+  margin-block: 3rem 0.8rem;
+}
+.dl__mark-list {
+  li {
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.8;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 12px;
+      aspect-ratio: 1;
+      background-color: #154d8b;
+      border-radius: 50%;
+    }
+  }
+}
+.company__address-link {
+  margin-left: 1em;
+}
+.company__address-icon {
+  font-family: "Material Symbols Outlined";
+  color: inherit;
+  font-variation-settings: "FILL" 1;
+  font-size: 16px;
+}
+.company__address-link-txt {
+  text-decoration: underline;
+}

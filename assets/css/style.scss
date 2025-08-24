@@ -1,0 +1,592 @@
+@charset "utf-8";
+
+$breakpoints: (
+  r1599: 1599px,
+  r1399: 1399px,
+  r1359: 1359px,
+  r1240: 1240px,
+  r1200: 1200px,
+  r1199: 1199px,
+  r1100: 1100px,
+  r1024: 1024px,
+  r960: 960px,
+  r930: 930px,
+  r834: 834px,
+  r639: 639px,
+  r600: 600px,
+  r499: 499px,
+  r450: 450px,
+  r399: 399px,
+);
+
+@mixin max($breakpoint) {
+  @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+    @content;
+  }
+}
+
+/**************************************/
+
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+button {
+  background-color: transparent;
+  border-style: none;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  // object-fit: contain;
+  display: block;
+  // vertical-align: bottom;
+  object-fit: cover;
+}
+
+html {
+  /*overflow:auto;*/
+  font-size: 10px;
+  -webkit-tap-highlight-color: transparent;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 100px;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: clip;
+  font-size: 1.6rem;
+  color: #000;
+  background: #fff;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: normal;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 2;
+  width: 100%;
+  letter-spacing: 0.2px;
+  @include max(r834) {
+    font-size: 1.4rem;
+  }
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+  transition: 0.3s;
+  -moz-transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+}
+
+a:hover {
+  // color: inherit;
+  text-decoration: none;
+  // opacity: 0.6;
+}
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/* -------------------------
+ * フォント
+ * ------------------------- */
+.ff-noto {
+  font-family: "Noto Sans JP", sans-serif;
+}
+.ff-inter {
+  font-family: "Inter", sans-serif;
+}
+.ff-kalnia {
+  font-family: "Kalnia", serif;
+  font-weight: 300;
+}
+.fwn {
+  font-weight: normal;
+}
+.fwm {
+  font-weight: 500;
+}
+.fwb {
+  font-weight: bold;
+}
+
+.fwsb {
+  //semibold
+  font-weight: 600;
+}
+
+/* -------------------------
+ * フォントサイズのroot
+ * ------------------------- */
+:root {
+  //834px以下の時のサイズ、834px～1679px間のサイズ（可変）、1680px以上の時のサイズ
+  --f10: clamp(0.8rem, 1vw, 1rem);
+  --f11: clamp(0.9rem, 1.1vw, 1.1rem);
+  --f12: clamp(1rem, 1.2vw, 1.2rem);
+  --f13: clamp(1rem, 1.3vw, 1.3rem);
+  --f14: clamp(1.1rem, 1.4vw, 1.4rem);
+  --f15: clamp(1.2rem, 1.5vw, 1.5rem);
+  --f16: clamp(1.3rem, 1.6vw, 1.6rem);
+  --f17: clamp(1.4rem, 1.7vw, 1.7rem);
+  --f18: clamp(1.4rem, 1.8vw, 1.8rem);
+  --f19: clamp(1.5rem, 1.9vw, 1.9rem);
+  --f20: clamp(1.6rem, 2vw, 2rem);
+  --f21: clamp(1.7rem, 2.1vw, 2.1rem);
+  --f22: clamp(1.8rem, 2.2vw, 2.2rem);
+  --f23: clamp(1.8rem, 2.3vw, 2.3rem);
+  --f24: clamp(1.9rem, 2.4vw, 2.4rem);
+  --f25: clamp(2rem, 2.5vw, 2.5rem);
+  --f26: clamp(2.1rem, 2.6vw, 2.6rem);
+  --f27: clamp(2.2rem, 2.7vw, 2.7rem);
+  --f28: clamp(2.2rem, 2.8vw, 2.8rem);
+  --f29: clamp(2.3rem, 2.9vw, 2.9rem);
+  --f30: clamp(2.4rem, 3vw, 3rem);
+  --f31: clamp(2.5rem, 3.1vw, 3.1rem);
+  --f32: clamp(2.6rem, 3.2vw, 3.2rem);
+  --f33: clamp(2.6rem, 3.3vw, 3.3rem);
+  --f34: clamp(2.7rem, 3.4vw, 3.4rem);
+  --f35: clamp(2.8rem, 3.5vw, 3.5rem);
+  --f36: clamp(2.9rem, 3.6vw, 3.6rem);
+  --f37: clamp(3rem, 3.7vw, 3.7rem);
+  --f38: clamp(3rem, 3.8vw, 3.8rem);
+  --f39: clamp(3.1rem, 3.9vw, 3.9rem);
+  --f40: clamp(3.2rem, 4vw, 4rem);
+  --f41: clamp(3.3rem, 4.1vw, 4.1rem);
+  --f42: clamp(3.4rem, 4.2vw, 4.2rem);
+  --f43: clamp(3.4rem, 4.3vw, 4.3rem);
+  --f44: clamp(3.5rem, 4.4vw, 4.4rem);
+  --f45: clamp(3.6rem, 4.5vw, 4.5rem);
+  --f46: clamp(3.7rem, 4.6vw, 4.6rem);
+  --f47: clamp(3.8rem, 4.7vw, 4.7rem);
+  --f48: clamp(3.8rem, 4.8vw, 4.8rem);
+  --f49: clamp(3.9rem, 4.9vw, 4.9rem);
+  --f50: clamp(4rem, 5vw, 5rem);
+  --f51: clamp(4.1rem, 5.1vw, 5.1rem);
+  --f52: clamp(4.2rem, 5.2vw, 5.2rem);
+  --f53: clamp(4.2rem, 5.3vw, 5.3rem);
+  --f54: clamp(4.3rem, 5.4vw, 5.4rem);
+  --f55: clamp(4.4rem, 5.5vw, 5.5rem);
+  --f56: clamp(4.5rem, 5.6vw, 5.6rem);
+  --f57: clamp(4.6rem, 5.7vw, 5.7rem);
+  --f58: clamp(4.6rem, 5.8vw, 5.8rem);
+  --f59: clamp(4.7rem, 5.9vw, 5.9rem);
+  --f60: clamp(4.8rem, 6vw, 6rem);
+  // 特大フォント
+  --f80: clamp(6.4rem, 7.6vw, 8rem);
+  --f120: clamp(9.6rem, 11.4vw, 12rem);
+}
+
+/* -------------------------
+ * フォントサイズの自動生成
+ * ------------------------- */
+@for $i from 10 through 60 {
+  .f#{$i} {
+    font-size: var(--f#{$i});
+  }
+}
+
+// 特大フォント
+.f80 {
+  font-size: var(--f80);
+}
+.f120 {
+  font-size: var(--f120);
+}
+
+/* -------------------------
+ * インナー幅、余白
+ * ------------------------- */
+.inner {
+  max-width: 1350px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.inner--1100 {
+  max-width: 1100px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.inner--1350 {
+  max-width: 1350px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.inner--1600 {
+  max-width: 1600px;
+  width: 90%;
+  margin: 0 auto;
+}
+.sec {
+  @include max(r834) {
+    padding-block: 5rem !important;
+  }
+}
+
+/* -------------------------
+ * 改行
+ * ------------------------- */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.br-499 {
+  display: none;
+  @include max(r499) {
+    display: block;
+  }
+}
+.no-br-499 {
+  display: block;
+  @include max(r499) {
+    display: none;
+  }
+}
+.br-834 {
+  display: none;
+  @include max(r834) {
+    display: block;
+  }
+}
+.no-br-834 {
+  display: block;
+  @include max(r834) {
+    display: none;
+  }
+}
+
+/* -------------------------
+ * 見出し
+ * ------------------------- */
+.sec__ttl-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.sec__ttl-wrap--left {
+  align-items: flex-start;
+}
+.sec__ttl-wrap--center {
+  align-items: center;
+}
+
+/* -------------------------
+ * ボタン、リンク
+ * ------------------------- */
+/*  ボタン共通 */
+.base-btn {
+  width: fit-content;
+  padding: 0.3rem 1.6rem 0.3rem 2rem;
+  min-width: 14.6rem;
+  border-radius: calc(infinity * 1px);
+  border: solid 1px #312c2c;
+  background: red;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-size: var(--fz16);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.08, 0.355, 0.11, 1);
+  /*はみ出る要素を隠す*/
+  overflow: hidden;
+  height: 3.9rem;
+  &:hover {
+    .txt {
+      transform: translateY(-100%);
+    }
+  }
+}
+
+/* -------------------------
+ * グローバルナビ
+ * ------------------------- */
+.page-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  mix-blend-mode: difference;
+  color: #fff;
+}
+.page__nav {
+  width: fit-content;
+  isolation: isolate;
+}
+.page-nav__item {
+  mix-blend-mode: difference;
+}
+.page-nav__item-link {
+  position: relative;
+  &:hover {
+    opacity: 1;
+  }
+  &.link--slide-text {
+    .txt--slide {
+      // height: 2.1rem;
+      height: 1.9rem;
+      line-height: 1.3;
+      @include max(r834) {
+        line-height: 1.4;
+      }
+    }
+  }
+}
+/* -------------------------
+ * ヘッダー
+ * ------------------------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 2rem;
+}
+.header-logo {
+  width: 200px;
+  height: auto;
+  display: block;
+}
+
+.header-logo__img {
+  width: 100%;
+  height: auto;
+}
+
+.header-nav__list {
+  display: flex;
+  gap: 3rem;
+}
+
+.header__nav {
+  @include max(r834) {
+    display: none;
+  }
+}
+/* -------------------------
+ * ハンバーガーボタン
+ * ------------------------- */
+$btn-height: 12px;
+.open-btn {
+  position: relative;
+  cursor: pointer;
+  width: 44px;
+  height: $btn-height;
+  cursor: pointer;
+  position: fixed;
+  top: 2.1rem;
+  right: 2.6rem;
+  z-index: 99999;
+  display: none;
+  @include max(r834) {
+    display: block;
+  }
+  span {
+    display: inline-block;
+    transition: all 0.4s;
+    position: absolute;
+    left: 0px;
+    height: 1px;
+    background: #fff;
+    width: 100%;
+    &:nth-of-type(1) {
+      top: 0px;
+    }
+    &:nth-of-type(2) {
+      top: calc($btn-height / 2);
+    }
+    &:nth-of-type(3) {
+      top: $btn-height;
+    }
+  }
+}
+
+/*ハンバーガーボタンクリック時*/
+.open-btn {
+  &.active {
+    span {
+      &:nth-of-type(1) {
+        // top: 18px;
+        // left: 0px;
+        transform: translateY(6px) rotate(-20deg);
+      }
+      &:nth-of-type(2) {
+        opacity: 0;
+      }
+      &:nth-of-type(3) {
+        // top: 30px;
+        // left: 0px;
+        transform: translateY(-6px) rotate(20deg);
+      }
+    }
+  }
+}
+/* -------------------------
+ * SPナビメニュー
+ * ------------------------- */
+.header {
+  .page__nav {
+    @include max(r834) {
+      opacity: 0;
+      visibility: hidden;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100dvh;
+      width: 100%;
+      background: transparent;
+      z-index: -1;
+      transition: opacity 0.4s ease, visibility 0.4s ease,
+        background-color 0.4s ease, z-index 0s 0.4s;
+      margin: 0;
+      padding: 15rem 2rem 2rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      font-weight: 300;
+
+      .page-nav__item {
+        font-size: 2rem;
+      }
+      .page-nav__list {
+        gap: 1rem;
+      }
+      .page-nav__item-link.link--slide-text .txt--slide {
+        height: 3rem;
+        line-height: 1.3;
+      }
+    }
+
+    &.active {
+      @include max(r834) {
+        opacity: 1;
+        visibility: visible;
+        background: #000;
+        z-index: 99;
+        transition: opacity 0.4s ease, visibility 0.4s ease,
+          background-color 0.4s ease, z-index 0s;
+      }
+    }
+  }
+}
+.header {
+  .page-nav__sp-logo {
+    @include max(r834) {
+      max-width: 20rem;
+      width: 46%;
+    }
+  }
+  .page-nav__sp-bottom {
+    @include max(r834) {
+      display: flex !important;
+    }
+  }
+}
+
+/* -------------------------
+ * フッター
+ * ------------------------- */
+.footer {
+  padding: 6.7rem 2.6rem 3.9rem;
+  background-color: #202020;
+  color: #fff;
+  z-index: 10;
+  @include max(r499) {
+    padding: 3rem 0rem;
+  }
+}
+.footer__inner {
+  @include max(r499) {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.footer__top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 36.5rem;
+  @include max(r499) {
+    flex-direction: column-reverse;
+    margin-bottom: 8rem;
+  }
+}
+
+.footer__logo {
+  width: 22.8rem;
+  transition: opacity ease-in-out 0.3s;
+  &:hover {
+    opacity: 0.7;
+  }
+  @include max(r499) {
+    margin-bottom: 3rem;
+    width: 18rem;
+  }
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* -------------------------
+ * 下層
+ * ------------------------- */
+body.under {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  margin-top: 30rem;
+  @include max(r834) {
+    margin-top: 15rem;
+  }
+}
+.under-main {
+  flex: 1;
+  padding-block: 6rem 12rem;
+  @include max(r834) {
+    padding-bottom: 3rem 6rem;
+  }
+}
+/* ページ見出し */
+.page-header__img {
+}

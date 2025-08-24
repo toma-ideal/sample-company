@@ -1,0 +1,62 @@
+$breakpoints: (
+  r1599: 1599px,
+  r1399: 1399px,
+  r1359: 1359px,
+  r1240: 1240px,
+  r1200: 1200px,
+  r1199: 1199px,
+  r1100: 1100px,
+  r1024: 1024px,
+  r960: 960px,
+  r930: 930px,
+  r834: 834px,
+  r639: 639px,
+  r600: 600px,
+  r499: 499px,
+  r450: 450px,
+  r399: 399px,
+);
+
+@mixin max($breakpoint) {
+  @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+    @content;
+  }
+}
+
+/**************************************/
+
+/* -------------------------
+ * トップ共通
+ * ------------------------- */
+
+/* -------------------------
+ * MV
+ * ------------------------- */
+.top-mv {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  background: grey;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+}
+/* -------------------------
+ * INTRO
+ * ------------------------- */
+.top-intro {
+  background: #e1f2fa;
+  height: 100vh;
+  padding-block: 12rem 10rem;
+}
+/* -------------------------
+ * ABOUT
+ * ------------------------- */
+.top-about {
+  background: #fff;
+  height: 100vh;
+  padding-block: 12rem 10rem;
+}
